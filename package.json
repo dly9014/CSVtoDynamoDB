@@ -1,0 +1,26 @@
+{
+  "name": "import-csv-tag-list-to-dynamodb",
+  "version": "1.0.0",
+  "description": "\"# Import CSV Tag List to DynamoDB\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dly9014/CSVtoDynamoDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dly9014/CSVtoDynamoDB/issues"
+  },
+  "homepage": "https://github.com/dly9014/CSVtoDynamoDB#readme",
+  "dependencies": {
+    "async": "^2.6.2",
+    "aws-sdk": "^2.447.0",
+    "csv-generate": "^3.2.0",
+    "csv-parse": "^4.4.1",
+    "stream-transform": "^2.0.0"
+  }
+}
