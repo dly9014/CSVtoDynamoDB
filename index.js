@@ -2,9 +2,17 @@ var fs = require('fs');
 var parse = require('csv-parse');
 var async = require('async');
 const AWS = require('aws-sdk');
+
+/************************* CHANGE THIS *****************************/
+// to update the QA environment on awsadmin account, uncomment the line below
+// AWS.config.loadFromPath('../awsadmin-config.json');
+/*******************************************************************/
+
 const dynamodbDocClient = new AWS.DynamoDB({ region: "us-east-1" });
 
-var csv_filename = "./VCS-tags.csv";
+/************************* CHANGE THIS *****************************/
+var csv_filename = "./VCS-builder-tags.csv";
+/*******************************************************************/
 
 rs = fs.createReadStream(csv_filename);
 parser = parse({
@@ -46,10 +54,13 @@ parser = parse({
     }
     data_imported = false;
     chunk_no = 1;
+
+
+    /************************* CHANGE THIS *****************************/
     async.each(split_arrays, (item_data, callback) => {
         const params = {
             RequestItems: {
-                "VirtualConciergeTag" : item_data
+                "VirtualConciergeBuilderTag" : item_data
             }
         }
         dynamodbDocClient.batchWriteItem(params, function(err, res, cap) {
@@ -70,6 +81,7 @@ parser = parse({
         console.log('all data imported....');
 
     });
+    /*******************************************************************/
 
 });
 rs.pipe(parser);
